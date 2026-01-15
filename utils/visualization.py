@@ -1,5 +1,5 @@
 """
-Visualization utilities for CS221n assignments.
+Visualization utilities for CS231n assignments.
 """
 
 import numpy as np

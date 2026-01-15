@@ -1,4 +1,4 @@
-# CS221n Projects
+# CS231n Projects
 
 This directory contains course projects and personal experiments.
 

@@ -1,5 +1,5 @@
 """
-Data loading and preprocessing utilities for CS221n assignments.
+Data loading and preprocessing utilities for CS231n assignments.
 """
 
 import numpy as np

@@ -1,6 +1,6 @@
-# CS221n Lecture Notes
+# CS231n Lecture Notes
 
-This directory contains personal notes and summaries from CS221n lectures.
+This directory contains personal notes and summaries from CS231n lectures.
 
 ## Lecture Topics
 

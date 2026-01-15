@@ -1,1 +1,1 @@
-# Utility functions for CS221n assignments and projects
+# Utility functions for CS231n assignments and projects

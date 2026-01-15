@@ -1,15 +1,15 @@
-# CS221n: Deep Learning for Computer Vision
+# CS231n: Deep Learning for Computer Vision
 
-Stanford University CS221n coursework and projects repository.
+Stanford University CS231n coursework and projects repository.
 
 ## Course Overview
 
-CS221n (also known as CS231n) is Stanford's course on Convolutional Neural Networks for Visual Recognition. This repository contains assignments, projects, and personal notes from the course.
+CS231n is Stanford's course on Convolutional Neural Networks for Visual Recognition. This repository contains assignments, projects, and personal notes from the course.
 
 ## Repository Structure
 
 ```
-CS221n/
+CS231n/
 ├── assignments/          # Course assignments
 │   ├── assignment1/     # Image Classification, kNN, SVM, Softmax
 │   ├── assignment2/     # Fully Connected Nets, Batch Normalization, Dropout, CNNs
