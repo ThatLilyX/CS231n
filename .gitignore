@@ -1,0 +1,128 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environment
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
+# PyCharm
+.idea/
+*.iml
+*.iws
+.idea_modules/
+
+# VSCode
+.vscode/
+*.code-workspace
+
+# Datasets (too large for git)
+datasets/
+data/
+*.hdf5
+*.h5
+*.pkl
+*.pickle
+
+# Model checkpoints and weights
+models/
+checkpoints/
+*.pth
+*.pt
+*.ckpt
+*.pb
+*.onnx
+saved_models/
+
+# Logs and outputs
+logs/
+*.log
+runs/
+outputs/
+results/
+wandb/
+
+# TensorBoard
+events.out.tfevents.*
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Thumbnails
+*.jpg.cache
+*.png.cache
+
+# PyTorch specific
+lightning_logs/
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# Coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Compressed files
+*.zip
+*.tar.gz
+*.tar
+*.rar
+
+# Large media files (unless specifically needed)
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.wmv
+
+# Backup files
+*.bak
+*.backup
