@@ -56,3 +56,4 @@ Output Layer (10 classes) + Softmax
 - [PyTorch nn.Module Tutorial](https://pytorch.org/tutorials/beginner/basics/buildmodel_tutorial.html)
 - [Weight Initialization](http://cs231n.github.io/neural-networks-2/#init)
 - [MNIST Dataset](http://yann.lecun.com/exdb/mnist/)
+- [What is torch.nn really?](https://docs.pytorch.org/tutorials/beginner/nn_tutorial.html)

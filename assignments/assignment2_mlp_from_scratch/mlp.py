@@ -27,18 +27,17 @@ class TwoLayerMLP(nn.Module):
                  dropout_prob: float = 0.0):
         super(TwoLayerMLP, self).__init__()
 
-        # TODO: Define layers explicitly (no nn.Sequential!)
         # Layer 1: Input -> Hidden
-        self.fc1 = None  # Replace with nn.Linear(...)
+        self.fc1 = nn.Linear(input_dim, hidden_dim)
 
         # Activation function
-        self.relu = None  # Replace with nn.ReLU()
+        self.relu = nn.ReLU()
 
         # Optional: Dropout for regularization
-        self.dropout = None  # Replace with nn.Dropout(dropout_prob) if needed
+        self.dropout = nn.Dropout(dropout_prob) if dropout_prob > 0 else None
 
         # Layer 2: Hidden -> Output
-        self.fc2 = None  # Replace with nn.Linear(...)
+        self.fc2 = nn.Linear(hidden_dim, output_dim)
 
         # Initialize weights
         self._initialize_weights()
@@ -47,9 +46,11 @@ class TwoLayerMLP(nn.Module):
         """
         Initialize weights using Xavier/He initialization.
         """
-        # TODO: Implement weight initialization
         # Hint: Use nn.init.xavier_uniform_ or nn.init.kaiming_uniform_
-        pass
+        nn.init.xavier_uniform_(self.fc1.weight)
+        nn.init.zeros_(self.fc1.bias)
+        nn.init.xavier_uniform_(self.fc2.weight)
+        nn.init.zeros_(self.fc2.bias)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         """
@@ -61,14 +62,18 @@ class TwoLayerMLP(nn.Module):
         Returns:
             Output tensor of shape (batch_size, output_dim)
         """
-        # TODO: Implement forward pass
         # Step 1: Flatten input if needed (for images)
+        x = x.view(x.size(0), -1)  # Flatten to (batch_size, input_dim)
         # Step 2: First layer + activation
+        x = self.fc1(x)
+        x = self.relu(x)
         # Step 3: Dropout (if using)
+        if self.dropout is not None:
+            x = self.dropout(x)
         # Step 4: Second layer
+        x = self.fc2(x)
         # Step 5: Return output (no softmax here - use CrossEntropyLoss)
-
-        pass
+        return x
 
     def get_num_parameters(self) -> int:
         """
@@ -92,12 +97,20 @@ class ThreeLayerMLP(nn.Module):
                  output_dim: int):
         super(ThreeLayerMLP, self).__init__()
 
-        # TODO: Implement a 3-layer version
-        pass
+        self.fc1 = nn.Linear(input_dim, hidden_dim1)
+        self.relu1 = nn.ReLU()
+        self.fc2 = nn.Linear(hidden_dim1, hidden_dim2)
+        self.relu2 = nn.ReLU()
+        self.fc3 = nn.Linear(hidden_dim2, output_dim)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
-        # TODO: Implement forward pass for 3 layers
-        pass
+        x = x.view(x.size(0), -1)  # Flatten input
+        x = self.fc1(x)
+        x = self.relu1(x)
+        x = self.fc2(x)
+        x = self.relu2(x)
+        x = self.fc3(x)
+        return x
 
 
 def test_model_architecture():

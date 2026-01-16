@@ -14,7 +14,7 @@ import time
 from mlp import TwoLayerMLP
 
 
-def get_mnist_loaders(batch_size: int = 64, data_dir: str = './data'):
+def get_mnist_loaders(batch_size: int = 64, data_dir: str = './datasets'):
     """
     Load MNIST dataset and create data loaders.
 
@@ -66,7 +66,7 @@ def get_mnist_loaders(batch_size: int = 64, data_dir: str = './data'):
 
 
 def train_epoch(model: nn.Module, train_loader: DataLoader,
-                criterion, optimizer, device: str) -> float:
+                criterion, optimizer, device: str) -> tuple:
     """
     Train for one epoch.
 
@@ -88,23 +88,29 @@ def train_epoch(model: nn.Module, train_loader: DataLoader,
     for batch_idx, (data, target) in enumerate(train_loader):
         # Move data to device
         data, target = data.to(device), target.to(device)
-
-        # TODO: Implement training step
+        
         # 1. Zero gradients
+        optimizer.zero_grad()
         # 2. Forward pass
+        output = model(data)
         # 3. Compute loss
+        loss = criterion(output, target)
         # 4. Backward pass
+        loss.backward()
         # 5. Update weights
+        optimizer.step()
 
         # Track metrics
-        total_loss += 0  # Replace with actual loss
+        total_loss += loss.item()
         total += target.size(0)
         # correct += ...  # Calculate correct predictions
+        pred = output.argmax(dim=1, keepdim=True)
+        correct += pred.eq(target.view_as(pred)).sum().item()
 
     avg_loss = total_loss / len(train_loader)
     accuracy = 100. * correct / total
 
-    return avg_loss
+    return avg_loss, accuracy
 
 
 def evaluate(model: nn.Module, test_loader: DataLoader,
@@ -130,12 +136,15 @@ def evaluate(model: nn.Module, test_loader: DataLoader,
         for data, target in test_loader:
             data, target = data.to(device), target.to(device)
 
-            # TODO: Implement evaluation
             # 1. Forward pass
+            output = model(data)
             # 2. Compute loss
+            loss = criterion(output, target)
+            test_loss += loss.item()
             # 3. Calculate accuracy
-
-            pass
+            pred = output.argmax(dim=1, keepdim=True)
+            correct += pred.eq(target.view_as(pred)).sum().item()
+            total += target.size(0)
 
     avg_loss = test_loss / len(test_loader)
     accuracy = 100. * correct / total
@@ -221,20 +230,21 @@ def train_model(num_epochs: int = 10, batch_size: int = 64,
         start_time = time.time()
 
         # Train
-        train_loss = train_epoch(model, train_loader, criterion, optimizer, device)
+        train_loss, train_acc = train_epoch(model, train_loader, criterion, optimizer, device)
 
         # Evaluate
         val_loss, val_acc = evaluate(model, test_loader, criterion, device)
 
         # Record history
         history['train_loss'].append(train_loss)
+        history['train_acc'].append(train_acc)
         history['val_loss'].append(val_loss)
         history['val_acc'].append(val_acc)
 
         # Print progress
         epoch_time = time.time() - start_time
         print(f"Epoch [{epoch+1}/{num_epochs}] ({epoch_time:.2f}s) - "
-              f"Train Loss: {train_loss:.4f} | "
+              f"Train Loss: {train_loss:.4f} | Train Acc: {train_acc:.2f}% | "
               f"Val Loss: {val_loss:.4f} | Val Acc: {val_acc:.2f}%")
 
     print("=" * 70)
@@ -243,9 +253,9 @@ def train_model(num_epochs: int = 10, batch_size: int = 64,
     # Plot results
     plot_training_curves(history)
 
-    # Save model
-    torch.save(model.state_dict(), 'mlp_mnist.pth')
-    print("Model saved to 'mlp_mnist.pth'")
+    # Save model to the models directory
+    torch.save(model.state_dict(), 'models/mlp_mnist.pth')
+    print("Model saved to 'models/mlp_mnist.pth'")
 
     return model, history
 
