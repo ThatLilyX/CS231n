@@ -28,10 +28,8 @@ Output Layer (10 classes) + Softmax
 
 ## Files
 - `mlp.py` - 2-layer MLP implementation
-- `train.py` - Training script
-- `evaluate.py` - Evaluation and testing
+- `train.py` - Training & evaluation
 - `mlp_notebook.ipynb` - Interactive notebook
-- `utils.py` - Helper functions
 
 ## Learning Goals
 - Understand the structure of neural networks
