@@ -4,18 +4,16 @@ Stanford University CS231n coursework and projects repository.
 
 ## Course Overview
 
-CS231n is Stanford's course on Convolutional Neural Networks for Visual Recognition. This repository contains assignments, projects, and personal notes from the course.
+CS231n is Stanford's course Deep Learning for Computer Vision. This repository contains assignments from the course.
 
 ## Repository Structure
 
 ```
 CS231n/
 ├── assignments/          # Course assignments
-│   ├── assignment1/     # Image Classification, kNN, SVM, Softmax
+│   ├── assignment1/     # Plot loss curves
 │   ├── assignment2/     # Fully Connected Nets, Batch Normalization, Dropout, CNNs
 │   └── assignment3/     # RNNs, LSTMs, Network Visualization, Style Transfer, GANs
-├── projects/            # Course projects and experiments
-├── notes/               # Lecture notes and summaries
 ├── datasets/            # Downloaded datasets (gitignored)
 ├── models/              # Trained models (gitignored)
 └── utils/               # Shared utility functions
@@ -53,60 +51,12 @@ Core libraries:
 
 See [requirements.txt](requirements.txt) for complete list.
 
-## Assignments
-
-### Assignment 1: Image Classification
-- k-Nearest Neighbor classifier
-- Support Vector Machine (SVM)
-- Softmax classifier
-- Two-layer neural network
-
-### Assignment 2: Neural Networks
-- Fully-connected neural networks
-- Batch normalization
-- Dropout
-- Convolutional neural networks
-
-### Assignment 3: Advanced Topics
-- Recurrent Neural Networks (RNNs)
-- Long Short-Term Memory (LSTM)
-- Network visualization
-- Style transfer
-- Generative Adversarial Networks (GANs)
-
 ## Resources
 
 - [Course Website](http://cs231n.stanford.edu/)
 - [Lecture Videos (YouTube)](https://www.youtube.com/playlist?list=PL3FW7Lu3i5JvHM8ljYj-zLfQRF3EO8sYv)
 - [Course Notes](http://cs231n.github.io/)
 - [Assignment Instructions](http://cs231n.github.io/assignments/)
-
-## Development Workflow
-
-1. Create a new branch for each assignment:
-   ```bash
-   git checkout -b assignment1
-   ```
-
-2. Work on the assignment in the respective directory
-
-3. Commit your changes regularly:
-   ```bash
-   git add .
-   git commit -m "feat: implement kNN classifier"
-   ```
-
-4. Merge to main when complete:
-   ```bash
-   git checkout main
-   git merge assignment1
-   ```
-
-## Notes
-
-- The `datasets/` and `models/` directories are gitignored to avoid committing large files
-- Jupyter notebooks (`.ipynb`) are included but output cells should be cleared before committing
-- Use clear commit messages following conventional commits format
 
 ## License
 

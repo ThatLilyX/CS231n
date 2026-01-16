@@ -12,8 +12,6 @@ Visualize and understand loss curves during neural network training to diagnose 
 
 ## Files
 - `loss_visualization.py` - Main implementation
-- `train_model.py` - Training script with loss tracking
-- `plot_curves.py` - Plotting utilities
 - `loss_visualization.ipynb` - Interactive notebook
 
 ## Learning Goals
